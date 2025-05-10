@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .dashboard-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        h1, h3 {
+            color: #00e5ff;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .graph-section {
+            margin: 30px 0;
+        }
+
+        #category-chart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <h1>📊 Customer Behavior Dashboard</h1>
+
+        <div class="graph-section">
+            <h3>Cluster Distribution</h3>
+            {{ graph1|safe }}
+        </div>
+
+        <div class="graph-section">
+            <h3>High Value Customers</h3>
+            {{ graph2|safe }}
+        </div>
+
+        <div class="graph-section">
+            <h3>Category Trends</h3>
+            {{ graph3|safe }}
+        </div>
+
+        <div class="graph-section">
+            <h3>CLV Segments</h3>
+            {{ graph4|safe }}
+        </div>
+
+        
+        <h3>Conclusion</h3>
+        <p style="font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold;">        By analyzing the uploaded file <strong>{{ filename }}</strong>, I conclude that distinct customer segments can be effectively identified using clustering techniques. 
+        The dashboard highlights valuable insights such as high-value customer clusters, category preferences, and CLV distributions.
+
+        From the visualization:
+        - Certain segments demonstrate significantly higher purchase amounts and frequent buying behavior, suggesting strong candidates for premium offers and loyalty programs.
+        - Seasonal and category trends indicate clear customer preferences, enabling targeted marketing and inventory planning.
+        - CLV segmentation helps prioritize customer engagement strategies—such as retention campaigns for high CLV groups and personalized promotions for moderate-value customers.
+
+        Overall, this analysis supports data-driven decision-making for customer retention, upselling opportunities, and optimized marketing strategies tailored to each segment.
+    </p>
+
+        <div id="category-chart"></div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        var graph = {{ graphJSON | safe }};
+        Plotly.newPlot('category-chart', graph.data, graph.layout);
+    </script>
+
+</body>
+</html>
