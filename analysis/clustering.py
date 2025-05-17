@@ -9,12 +9,9 @@ def perform_clustering(df, n_clusters=4):
         le = LabelEncoder()
         df['Frequency of Purchases'] = le.fit_transform(df['Frequency of Purchases'].astype(str))
 
-    # You can encode more columns similarly if needed
-    # Example:
-    # for col in ['Subscription Status', 'Payment Method']:
-    #     df[col] = le.fit_transform(df[col].astype(str))
+  
 
-    # Extract only numerical features
+
     X = df[features].copy()
 
     # Handle any missing or invalid data
