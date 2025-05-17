@@ -3,7 +3,6 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 import pandas as pd
 
 def perform_clustering(df, n_clusters=4):
-    # Select columns for clustering (modify as needed)
     features = ['Age', 'Purchase Amount (USD)', 'Review Rating', 'Previous Purchases', 'Frequency of Purchases']
 
     # Encode categorical column(s)
