@@ -16,7 +16,6 @@ def perform_clustering(df, n_clusters=4):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    # Perform KMeans clustering
     kmeans = KMeans(n_clusters=n_clusters, random_state=42)
     df['Cluster'] = kmeans.fit_predict(X_scaled)
     print(df.dtypes)
