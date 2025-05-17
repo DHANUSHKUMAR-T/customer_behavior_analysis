@@ -4,8 +4,7 @@ This Flask-based dashboard enables businesses to analyze customer behavior using
 
 ---
 
-## 📌 Features
-
+## 📌 Features 
 - ✅ **K-Means Clustering** – Group customers based on purchasing behavior  
 - 📈 **Customer Lifetime Value (CLV)** – Quantify long-term customer worth  
 - 🔍 **High-Value Customer Detection** – Identify loyal or big-spending users  
