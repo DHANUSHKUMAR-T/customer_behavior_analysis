@@ -6,7 +6,7 @@ def calculate_clv(df):
 
     avg_transaction = df.groupby('Customer ID')['Purchase Amount (USD)'].mean()
     purchase_freq = df.groupby('Customer ID')['Frequency of Purchases'].mean()
-    lifespan = 12  # months
+    lifespan = 12
 
     clv = avg_transaction * purchase_freq * lifespan
     clv_df = clv.reset_index()
