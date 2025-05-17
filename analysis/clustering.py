@@ -5,7 +5,6 @@ import pandas as pd
 def perform_clustering(df, n_clusters=4):
     features = ['Age', 'Purchase Amount (USD)', 'Review Rating', 'Previous Purchases', 'Frequency of Purchases']
 
-    # Encode categorical column(s)
     if 'Frequency of Purchases' in df.columns:
         le = LabelEncoder()
         df['Frequency of Purchases'] = le.fit_transform(df['Frequency of Purchases'].astype(str))
