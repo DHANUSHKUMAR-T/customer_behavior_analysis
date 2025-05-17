@@ -9,15 +9,10 @@ def perform_clustering(df, n_clusters=4):
         le = LabelEncoder()
         df['Frequency of Purchases'] = le.fit_transform(df['Frequency of Purchases'].astype(str))
 
-  
-
-
     X = df[features].copy()
 
-    # Handle any missing or invalid data
     X = X.dropna()
 
-    # Standardize features
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
